@@ -6,7 +6,9 @@ if not Velora then
     Velora.Name = 'Velora'
     Velora.ResetOnSpawn = false
     Velora.IgnoreGuiInset = true
+end
 
+if not Velora:FindFirstChild("Notifications") then
     game:GetObjects("rbxassetid://129923956313208")[1].Parent = Velora
 end
 
