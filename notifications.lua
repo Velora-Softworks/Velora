@@ -73,7 +73,7 @@ function Notify(title, description, icon, duration, buttons, color)
 	
 	Notification.Parent = Notifications
 	Notification.Name = "Notification"
-	Notification.Size -= UDim2.new(0, 0, Notification.Buttons.Size.Y.Scale, Notification.Buttons.Size.Y.Offset)
+	Notification.Size -= UDim2.new(0, 0, 0, Notification.Buttons.AbsoluteSize.Y)
 	Notification.Title.Text = tostring(title)
 	Notification.Text.Text = tostring(description)
 	Notification.Visible = true
@@ -114,7 +114,7 @@ function Notify(title, description, icon, duration, buttons, color)
 	if Buttons then
 		task.wait(2)
 		
-		Tween(Notification, TweenInfo.new(.5), {Size = Notification.Size + UDim2.new(0, 0, Notification.Buttons.Size.Y.Scale, Notification.Buttons.Size.Y.Offset)}, 1)
+		Tween(Notification, TweenInfo.new(.5), {Size = Notification.Size + UDim2.new(0, 0, 0, Notification.Buttons.AbsoluteSize.Y)}, 1)
 		
 		local TemplateButton = Notification.Buttons.Template
 		local ExistingButtons = 0
