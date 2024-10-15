@@ -7,7 +7,7 @@ if not Velora then
     Velora.ResetOnSpawn = false
     Velora.IgnoreGuiInset = true
 
-    game:GetObjects("rbxassetid://129923956313208").Parent = Velora
+    game:GetObjects("rbxassetid://129923956313208")[1].Parent = Velora
 end
 
 return require(Velora.Notifications:WaitForChild"Notifier")
