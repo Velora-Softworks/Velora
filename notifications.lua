@@ -14,12 +14,14 @@ if not Velora then
 end
 
 if not Velora:FindFirstChild('Notifications') then
+	-- StarterGui.ScreenGui.Notifications
 	local G2L = {};
+
 	G2L["2"] = Instance.new("Frame", Velora);
 	G2L["2"]["BorderSizePixel"] = 0;
 	G2L["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 	G2L["2"]["Size"] = UDim2.new(0, 350, 0, 763);
-	G2L["2"]["Position"] = UDim2.new(0.791, 0, 0.133, 0);
+	G2L["2"]["Position"] = UDim2.new(1, -379, 1, -782);
 	G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 	G2L["2"]["Name"] = [[Notifications]];
 	G2L["2"]["BackgroundTransparency"] = 1;
@@ -201,17 +203,22 @@ Template:FindFirstChild('Transparency').Enabled = true
 if JustCreated then
 	local Manage = {}
 	
+	function SetUDim2()
+		Notifications.Position = VeloraFunctions:GetUDim2(UDim2.new(1, -379, 1, -782))
+
+		for _Instance, Size in pairs(Manage) do
+			_Instance.Size = VeloraFunctions:GetUDim2(Size, 'Auto')
+		end
+	end
+	
 	for Descendant in pairs(Template:GetDescendants()) do
 		if pcall(function()return Descendant.Size or error('') end) then
 			Manage[Descendant] = Descendant.Size
 		end
 	end
 	
-	workspace.Camera:GetPropertyChangedSignal('ViewportSize'):Connect(function()
-		for _Instance, Size in pairs(Manage) do
-			_Instance.Size = VeloraFunctions:GetUDim2(Size, 'Auto')
-		end
-	end)
+	workspace.Camera:GetPropertyChangedSignal('ViewportSize'):Connect(SetUDim2)
+	SetUDim2()
 end
 
 -- Notifier
